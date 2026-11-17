@@ -2,13 +2,6 @@
 
 This project sends a linear chirp (a tone sweeping from 500 Hz to 1500 Hz) over the air, records it with a microphone on an Arduino UNO, and detects it in MATLAB with a matched filter (cross-correlation against an ideal chirp template). The aim is to show why a wideband chirp is easier to pick out of room noise than a single tone.
 
-| | |
-|---|---|
-| **Course** | ELP311, IIT Delhi |
-| **Supervisor** | Prof. Swades De |
-| **Date** | April 2026 |
-| **Team** | Group 04 (Thursday): Aarzoo, Ishanee Neb, Apurva, Kabir Kashyap |
-
 ## How it works
 
 ```
@@ -74,22 +67,3 @@ Captured data files are not included in this repo, so you need your own capture 
 - The Arduino records about 107 ms, but the transmitted chirp is 0.5 s long, so each capture holds only part of the sweep. The analysis template sweeps the full 500–1500 Hz within the capture length, so it is a simplified template rather than an exact copy of the captured segment.
 - The sample interval is integer microseconds (1000000 / 4761 = 210 µs), so the true rate is about 4762 Hz. This is close enough for these plots.
 - The single-tone comparison is qualitative: the code analyses the chirp only.
-
-## Contributions
-
-This was a four-person group project:
-
-| Member | Work |
-|---|---|
-| Aarzoo | Arduino code (trigger logic, ADC sampling, serial streaming); hardware assembly and wiring |
-| Ishanee Neb | MATLAB chirp generation and speaker playback; FFT analysis and plot formatting |
-| Apurva | MATLAB spectrogram and signal statistics; ISD1820 recording and verification |
-| Kabir Kashyap | MATLAB matched filter (cross-correlation); report, presentation and result interpretation |
-
-## References
-
-1. J. G. Proakis and D. G. Manolakis, *Digital Signal Processing*, 4th ed.
-2. MATLAB documentation: `chirp`, `xcorr`, `spectrogram`
-3. ISD1820 datasheet
-4. Arduino UNO reference
-5. M. I. Skolnik, *Introduction to Radar Systems* (matched filter theory)
